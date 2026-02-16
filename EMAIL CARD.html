@@ -1,0 +1,346 @@
+/* LCL Powerd by Daniel Pohl a Vision from CEO - CO-CEO and the Team of WorldWideWeb */
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starlight Signature | StarLightMovemenTz Foundation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@200;400;700&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* HIGH-PERFORMANCE CANVAS ENGINE */
+        #starCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* ========== PANZERGLAS EFFEKT ========== */
+        .sig-container {
+            position: relative;
+            width: 850px;
+            background: linear-gradient(135deg, rgba(0, 5, 15, 0.7) 0%, rgba(0, 8, 20, 0.8) 100%);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            border: 2px solid rgba(191, 149, 63, 0.6);
+            padding: 60px;
+            z-index: 100;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37),
+                        0 0 120px rgba(191, 149, 63, 0.25),
+                        inset 0 0 40px rgba(191, 149, 63, 0.1);
+            text-align: center;
+            border-radius: 12px;
+            border-image: none;
+            border-color: rgba(191, 149, 63, 0.7);
+        }
+
+        /* Emblem am oberen Rand */
+        .sig-emblem-docked {
+            position: absolute;
+            top: -55px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 110px;
+            height: 110px;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 8, 20, 0.95) 100%);
+            border-radius: 50%;
+            z-index: 1100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid rgba(191, 149, 63, 0.8);
+            box-shadow: 0 8px 32px 0 rgba(191, 149, 63, 0.4),
+                        0 0 50px rgba(191, 149, 63, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .sig-header h1 {
+            margin: 0;
+            font-family: 'Cinzel', serif;
+            font-size: 44px;
+            color: #fcf6ba;
+            letter-spacing: 20px;
+            text-transform: uppercase;
+            text-shadow: 0 0 30px rgba(191, 149, 63, 0.7);
+        }
+
+        .sig-subtitle {
+            font-size: 13px;
+            letter-spacing: 9px;
+            color: #ffffff;
+            text-transform: uppercase;
+            margin-top: 15px;
+            opacity: 0.9;
+        }
+
+        /* ========== A4 BREAKPOINT: ZENTRALE HARMONISCHE STRUKTUR ========== */
+        .sig-body {
+            display: block;
+            margin-top: 45px;
+            text-align: center;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .sig-column {
+            width: 100%;
+            margin-bottom: 35px;
+        }
+
+        .sig-label {
+            color: #FFCC00;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 3.5px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .sig-value {
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: 200;
+            display: block;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .sig-links {
+            margin-top: 50px;
+        }
+
+        .sig-link {
+            color: #fcf6ba;
+            text-decoration: none;
+            font-size: 12px;
+            border: 1px solid #bf953f;
+            padding: 12px 28px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin: 0 15px;
+            background: rgba(0, 0, 0, 0.9);
+            transition: all 0.3s ease;
+            letter-spacing: 2px;
+        }
+
+        .sig-link:hover {
+            background: #bf953f;
+            color: #000;
+            box-shadow: 0 0 40px #bf953f;
+            transform: translateY(-3px);
+        }
+
+        .sig-footer {
+            margin-top: 55px;
+            padding-top: 35px;
+            border-top: 1px solid rgba(191, 149, 63, 0.5);
+        }
+
+        .hnoss-mini {
+            font-family: 'Cinzel', serif;
+            font-size: 32px;
+            color: #bf953f;
+            font-weight: bold;
+            letter-spacing: 12px;
+        }
+
+        .rights-note {
+            color: #ff4d4d;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, rgba(191, 149, 63, 0.25) 0%, rgba(191, 149, 63, 0.35) 100%);
+            border: 2px solid rgba(191, 149, 63, 0.6);
+            color: #fcf6ba;
+            font-family: 'Cinzel', serif;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            backdrop-filter: blur(25px) saturate(150%);
+            -webkit-backdrop-filter: blur(25px) saturate(150%);
+            transition: all 0.4s ease;
+            z-index: 10000;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(135deg, rgba(191, 149, 63, 0.9) 0%, rgba(252, 246, 186, 0.9) 100%);
+            color: #000;
+            box-shadow: 0 8px 32px 0 rgba(191, 149, 63, 0.5),
+                        0 0 40px rgba(191, 149, 63, 0.6);
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="TrustedTrustThrust.html" class="back-btn">← Zurück</a>
+
+    <!-- Die Engine für 99.999+ Sterne -->
+    <canvas id="starCanvas"></canvas>
+
+    <div class="sig-container">
+        <div class="sig-emblem-docked">
+            <div style="font-family: 'Cinzel', serif; font-size: 11px; font-weight: bold; text-align: center; color: #fcf6ba; text-transform: uppercase;">
+                TRUSTED<br>AUTHORITY
+            </div>
+        </div>
+
+        <div class="sig-header">
+            <h1>StarLightMovemenTz</h1>
+            <div class="sig-subtitle">Foundation | Expert Under Civil Law | EU-Union</div>
+        </div>
+
+        <div class="sig-body">
+            <div class="sig-column">
+                <span class="sig-label">Trustee & Legal Person</span>
+                <span class="sig-value">Daniel Pohl (HolyThreeKings)</span>
+
+                <span class="sig-label">Direct Channels</span>
+                <span class="sig-value" style="font-size: 15px;">
+                    LikeWise@Paderborn.com<br>
+                    StatesFlowWishes@outlook.it
+                </span>
+
+                <span class="sig-label">D-U-N-S® Global Database</span>
+                <span class="sig-value">315676980 / 317066336</span>
+            </div>
+
+            <div class="sig-column">
+                <span class="sig-label">VAT ID / EU Reference</span>
+                <span class="sig-value">DE441892129 | EX2025D1218310</span>
+
+                <span class="sig-label">UNGM & PIC Identifier</span>
+                <span class="sig-value">1172700 | 873042778</span>
+
+                <span class="sig-label">Swiss Identification (AHV)</span>
+                <span class="sig-value">756.6199.0539.28</span>
+            </div>
+        </div>
+
+        <div class="sig-links">
+            <a href="https://corporationpartner.governmententerprise.org" class="sig-link">Gov-Portal</a>
+            <a href="http://trustedorbitscodex.eu" class="sig-link">Codex-EU</a>
+            <a href="https://github.com/wEaRe-TrusTedThrusTe-Trust-True-Trustee" class="sig-link">Registry</a>
+        </div>
+
+        <div class="sig-footer">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="left">
+                        <span class="hnoss-mini">HNOSS&trade;</span><br>
+                        <span style="color: #FFCC00; font-size: 12px; text-transform: uppercase; letter-spacing: 3px;">Registered Trade Mark | Foundation Entity</span>
+                    </td>
+                    <td align="right" valign="bottom">
+                        <span style="font-size: 11px; color: #aaaaaa; display: block; margin-bottom: 5px;">LEI: 894500GBJSIW8L6ET310</span>
+                        <span class="rights-note">Keine Rechteabtretung erteilt. &copy;</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('starCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height, stars = [];
+        // ANZAHL DER STERNE: Simulation von massiver Dichte
+        const starCount = 5000;
+
+        function init() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            stars = [];
+            for (let i = 0; i < starCount; i++) {
+                stars.push({
+                    x: Math.random() * width - width / 2,
+                    y: Math.random() * height - height / 2,
+                    z: Math.random() * width,
+                    o: Math.random(),
+                    color: i % 15 === 0 ? "#fcf6ba" : "#ffffff" // Goldene Akzente alle paar Sterne
+                });
+            }
+        }
+
+        function draw() {
+            // Schwarzer Hintergrund mit Motion Blur (Trail)
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+            ctx.fillRect(0, 0, width, height);
+
+            ctx.save();
+            ctx.translate(width / 2, height / 2);
+
+            for (let i = 0; i < starCount; i++) {
+                let star = stars[i];
+                star.z -= 4.5; // Geschwindigkeit des Warp-Effekts
+
+                // Wenn der Stern am Betrachter vorbei ist, hinten neu spawnen
+                if (star.z <= 0) {
+                    star.z = width;
+                    star.x = Math.random() * width - width / 2;
+                    star.y = Math.random() * height - height / 2;
+                }
+
+                // Perspektivische Berechnung der Position
+                const x = star.x * (width / star.z);
+                const y = star.y * (height / star.z);
+                const s = Math.min(2, 1.5 * (width / star.z)); // Größe basierend auf Distanz
+
+                // Zeichne Stern
+                ctx.beginPath();
+                ctx.fillStyle = star.color;
+                ctx.globalAlpha = star.o * (1 - star.z / width); // Einblenden wenn sie näher kommen
+
+                ctx.arc(x, y, s / 2, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.globalAlpha = 1;
+            }
+            ctx.restore();
+            requestAnimationFrame(draw);
+        }
+
+        // Anpassung bei Fenstergröße-Änderung
+        window.addEventListener('resize', init);
+
+        // Start der Engine
+        init();
+        draw();
+    </script>
+
+</body>
+</html>

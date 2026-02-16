@@ -1,0 +1,16 @@
+[build]
+  publish = "."
+  command = "echo 'No build required'"
+
+[[redirects]]
+  from = "/"
+  to = "/TrustedTrustThrust.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"

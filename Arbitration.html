@@ -1,0 +1,595 @@
+/* LCL Powerd by Daniel Pohl a Vision from CEO - CO-CEO and the Team of WorldWideWeb */
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schiedsgerichtsbarkeit | StarLightMovemenTz Foundation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Montserrat:wght@200;300;400;600;700&display=swap');
+
+        :root {
+            --gold: #bf953f;
+            --gold-light: #fcf6ba;
+            --gold-mid: #b38728;
+            --deep-dark: rgba(0, 8, 20, 0.98);
+            --border-gold: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fcf6ba, #bf953f);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100vh;
+            background-color: #000;
+            color: #f0f0f0;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        #starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1000;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px 100px;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, rgba(191, 149, 63, 0.25) 0%, rgba(191, 149, 63, 0.35) 100%);
+            border: 2px solid rgba(191, 149, 63, 0.6);
+            color: #fcf6ba;
+            font-family: 'Cinzel', serif;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            backdrop-filter: blur(25px) saturate(150%);
+            -webkit-backdrop-filter: blur(25px) saturate(150%);
+            transition: all 0.4s ease;
+            z-index: 10000;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(135deg, rgba(191, 149, 63, 0.9) 0%, rgba(252, 246, 186, 0.9) 100%);
+            color: #000;
+            box-shadow: 0 8px 32px 0 rgba(191, 149, 63, 0.5), 0 0 40px rgba(191, 149, 63, 0.6);
+            transform: translateX(-5px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 8vw, 4rem);
+            background: var(--border-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0 0 20px 0;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--gold-light);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        .glass-card {
+            background: linear-gradient(135deg, rgba(0, 8, 20, 0.75) 0%, rgba(0, 8, 20, 0.85) 100%);
+            border: 2px solid rgba(191, 149, 63, 0.6);
+            padding: 50px;
+            margin-bottom: 50px;
+            backdrop-filter: blur(60px) saturate(180%);
+            -webkit-backdrop-filter: blur(60px) saturate(180%);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), 0 0 100px rgba(191, 149, 63, 0.15);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::after {
+            content: "";
+            position: absolute;
+            top: -150%;
+            left: -150%;
+            width: 300%;
+            height: 300%;
+            background: linear-gradient(45deg, transparent 45%, rgba(252, 246, 186, 0.03) 48%, rgba(252, 246, 186, 0.06) 50%, rgba(252, 246, 186, 0.03) 52%, transparent 55%);
+            animation: shine 8s infinite linear;
+        }
+
+        @keyframes shine {
+            0% { transform: translate(-20%, -20%); }
+            100% { transform: translate(20%, 20%); }
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 2rem;
+            margin: 0 0 30px 0;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            border-bottom: 2px solid rgba(191, 149, 63, 0.3);
+            padding-bottom: 20px;
+        }
+
+        h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-light);
+            font-size: 1.3rem;
+            margin: 30px 0 15px 0;
+            letter-spacing: 3px;
+            border-left: 4px solid var(--gold);
+            padding-left: 20px;
+        }
+
+        .institutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .institution-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.05) 100%);
+            border: 1px solid rgba(191, 149, 63, 0.5);
+            padding: 35px;
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .institution-card:hover {
+            background: linear-gradient(135deg, rgba(191, 149, 63, 0.12) 0%, rgba(191, 149, 63, 0.15) 100%);
+            border-color: var(--gold);
+            transform: translateY(-10px);
+            box-shadow: 0 8px 32px 0 rgba(191, 149, 63, 0.3);
+        }
+
+        .flag {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .institution-card h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-light);
+            font-size: 1.2rem;
+            margin: 15px 0;
+            letter-spacing: 2px;
+        }
+
+        .institution-card p {
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .variant-box {
+            background: linear-gradient(135deg, rgba(0, 8, 20, 0.6) 0%, rgba(0, 8, 20, 0.7) 100%);
+            border: 1px solid rgba(191, 149, 63, 0.4);
+            border-left: 4px solid var(--gold);
+            padding: 30px;
+            margin: 25px 0;
+            backdrop-filter: blur(20px);
+            border-radius: 8px;
+        }
+
+        .variant-number {
+            display: inline-block;
+            background: var(--border-gold);
+            color: #000;
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .variant-title {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-light);
+            font-size: 1.4rem;
+            margin: 10px 0;
+            letter-spacing: 2px;
+        }
+
+        .clause-text {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(191, 149, 63, 0.3);
+            padding: 25px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: #fcf6ba;
+            border-radius: 6px;
+            font-style: italic;
+        }
+
+        .check-icon {
+            color: #00ff88;
+            margin-right: 10px;
+        }
+
+        .btn-link {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 2px solid rgba(191, 149, 63, 0.6);
+            background: linear-gradient(135deg, rgba(0, 8, 20, 0.65) 0%, rgba(0, 8, 20, 0.75) 100%);
+            color: var(--gold-light);
+            font-family: 'Cinzel', serif;
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(20px);
+            border-radius: 6px;
+            margin: 10px 5px;
+        }
+
+        .btn-link:hover {
+            background: linear-gradient(135deg, rgba(191, 149, 63, 0.9) 0%, rgba(252, 246, 186, 0.9) 100%);
+            color: #000;
+            box-shadow: 0 8px 32px 0 rgba(191, 149, 63, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .note-box {
+            background: linear-gradient(135deg, rgba(191, 149, 63, 0.1) 0%, rgba(191, 149, 63, 0.15) 100%);
+            border: 2px dashed rgba(191, 149, 63, 0.5);
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 8px;
+            backdrop-filter: blur(20px);
+        }
+
+        .note-box strong {
+            color: var(--gold-light);
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            padding: 10px 0 10px 30px;
+            position: relative;
+            line-height: 1.8;
+        }
+
+        ul li::before {
+            content: "⚖️";
+            position: absolute;
+            left: 0;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                padding: 100px 20px 60px;
+            }
+            
+            .glass-card {
+                padding: 30px;
+            }
+
+            .institutions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="starfield"></canvas>
+    
+    <a href="TrustedTrustThrust.html" class="back-btn">← Zurück</a>
+
+    <div class="content-wrapper">
+        <div class="header">
+            <h1>Schiedsgerichtsbarkeit</h1>
+            <p>Die 3 Giganten & 7 Strategischen Varianten</p>
+        </div>
+
+        <!-- DIE 3 GIGANTEN -->
+        <div class="glass-card">
+            <h2>🏛️ Die 3 Giganten der Schiedsgerichtsbarkeit</h2>
+            <div class="institutions-grid">
+                <div class="institution-card">
+                    <div class="flag">🇫🇷</div>
+                    <h4>Frankreich (ICC)</h4>
+                    <p>Der globale Goldstandard für maximale Vollstreckbarkeit weltweit.</p>
+                    <a href="https://iccwbo.org/dispute-resolution/" target="_blank" class="btn-link">Website besuchen</a>
+                </div>
+
+                <div class="institution-card">
+                    <div class="flag">🇮🇪</div>
+                    <h4>Irland (DIAC)</h4>
+                    <p>Common Law Hub der EU. Ideal für Tech, Finance und Pharma.</p>
+                    <a href="https://dublinarbitration.com/" target="_blank" class="btn-link">Website besuchen</a>
+                </div>
+
+                <div class="institution-card">
+                    <div class="flag">🇪🇸</div>
+                    <h4>Spanien (CIAM)</h4>
+                    <p>Die strategische Brücke nach Lateinamerika und Ibero-Amerika.</p>
+                    <a href="https://ciam-arbitraje.com/" target="_blank" class="btn-link">Website besuchen</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- DIE 7 VARIANTEN -->
+        <div class="glass-card">
+            <h2>⚖️ Die 7 Strategischen Varianten</h2>
+
+            <!-- VARIANTE 1 -->
+            <div class="variant-box">
+                <span class="variant-number">VARIANTE 1</span>
+                <div class="variant-title">Die Effizienz-Variante (Irland / Startups)</div>
+                <div class="clause-text">
+                    "Any dispute, controversy or claim arising out of or relating to this contract shall be referred to and finally resolved by arbitration in accordance with the Arbitration Rules of Arbitration Ireland. The seat of arbitration shall be Dublin, Ireland. The number of arbitrators shall be one. The language of the proceedings shall be English."
+                </div>
+                <p><span class="check-icon">✓</span> Spart Zeit und hohe Honorarkosten. Fokus auf schnellen Projektdurchlauf.</p>
+            </div>
+
+            <!-- VARIANTE 2 -->
+            <div class="variant-box">
+                <span class="variant-number">VARIANTE 2</span>
+                <div class="variant-title">Die Mittelstands-Variante (Spanien / EU-Handel)</div>
+                <div class="clause-text">
+                    "Alle Streitigkeiten, die sich aus oder im Zusammenhang mit diesem Vertrag ergeben, werden durch ein Schiedsverfahren des CIAM gemäß seiner Schiedsgerichtsordnung endgültig entschieden. Schiedsort ist Madrid, Spanien. Die Anzahl der Schiedsrichter beträgt eins (sofern der Streitwert unter 1 Mio. € liegt). Die Verfahrenssprache ist Deutsch."
+                </div>
+                <p><span class="check-icon">✓</span> Ausgewogenheit zwischen Professionalität und Kosten für den EU-Mittelstand.</p>
+            </div>
+
+            <!-- VARIANTE 3 -->
+            <div class="variant-box">
+                <span class="variant-number">VARIANTE 3</span>
+                <div class="variant-title">Die Großprojekt-Variante (Frankreich / Max. Sicherheit)</div>
+                <div class="clause-text">
+                    "All disputes arising out of or in connection with the present contract shall be finally settled under the Rules of Arbitration of the International Chamber of Commerce (ICC). The seat of arbitration shall be Paris, France. The number of arbitrators shall be three. The language of the proceedings shall be English."
+                </div>
+                <p><span class="check-icon">✓</span> Für komplexe Verträge mit drei Experten-Schiedsrichtern. Maximale Sicherheit.</p>
+            </div>
+
+            <!-- VARIANTE 4 -->
+            <div class="variant-box">
+                <span class="variant-number">VARIANTE 4</span>
+                <div class="variant-title">Die Neutralitäts-Variante (Schweiz / Drittland)</div>
+                <div class="clause-text">
+                    "All disputes arising out of or in connection with the present contract shall be finally settled under the Rules of Arbitration of the ICC. The seat of arbitration shall be Geneva, Switzerland. The number of arbitrators shall be three. The language of the proceedings shall be English."
+                </div>
+                <p><span class="check-icon">✓</span> Vermeidet Heimvorteil einer Partei durch neutralen Schweizer Boden.</p>
+            </div>
+
+            <!-- VARIANTE 5 -->
+            <div class="variant-box">
+                <span class="variant-number">VARIANTE 5</span>
+                <div class="variant-title">Die Finanz- & IT-Variante (Irland / Tech)</div>
+                <div class="clause-text">
+                    "Any dispute arising out of or relating to this contract shall be resolved by arbitration administered by the Dublin International Arbitration Centre (DIAC). The seat shall be Dublin, Ireland. The number of arbitrators shall be one (with specific technical expertise). The language shall be English."
+                </div>
+                <p><span class="check-icon">✓</span> Optimiert für Verträge im Bereich Technologie und Software mit Fachexperten.</p>
+            </div>
+
+            <!-- VARIANTE 6 -->
+            <div class="variant-box">
+                <span class="variant-number">VARIANTE 6</span>
+                <div class="variant-title">Die Ibero-Amerika-Variante (Spanien / LatAm)</div>
+                <div class="clause-text">
+                    "Cualquier controversia derivada de este contrato será resuelta definitivamente mediante arbitraje administrado por el Centro Internacional de Arbitraje de Madrid (CIAM). El lugar del arbitraje será Madrid, España. El número de árbitros será de tres. El idioma del procedimiento será el español."
+                </div>
+                <p><span class="check-icon">✓</span> Speziell für Geschäfte mit spanischsprachigen lateinamerikanischen Partnern.</p>
+            </div>
+
+            <!-- VARIANTE 7 -->
+            <div class="variant-box" style="border: 2px solid var(--gold);">
+                <span class="variant-number">VARIANTE 7 - MASTER STANDARD</span>
+                <div class="variant-title">Die Flexibilitäts-Variante (Intelligenter Standard)</div>
+                <div class="clause-text">
+                    "Alle Streitigkeiten, die sich aus oder im Zusammenhang mit diesem Vertrag ergeben, werden nach der Schiedsgerichtsordnung der ICC endgültig entschieden. Schiedsort ist Paris, Frankreich. Die Anzahl der Schiedsrichter beträgt eins bei einem Streitwert bis 500.000 € und drei bei einem Streitwert über 500.000 €. Die Verfahrenssprache ist Englisch."
+                </div>
+                <p><span class="check-icon">✓</span> <strong>Empfohlener Standard für den Masterplan</strong> - Passt sich automatisch an die Projektgröße an.</p>
+            </div>
+        </div>
+
+        <!-- VOLLSTRECKUNGS-CHECK -->
+        <div class="glass-card">
+            <h2>🛡️ Vollstreckungs-Check</h2>
+            <div class="note-box">
+                <p><strong>Alle genannten Schiedsorte fallen unter das New Yorker Übereinkommen von 1958.</strong></p>
+                <p>Damit ist Ihr Schiedsspruch ein „Binding Treaty" und kann weltweit wie ein staatliches Urteil vollstreckt werden.</p>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://treaties.un.org/" target="_blank" class="btn-link">UN Datenbank</a>
+                <a href="https://iccwbo.org/dispute-resolution/" target="_blank" class="btn-link">ICC Klausel-Guide</a>
+            </div>
+        </div>
+
+        <!-- STRATEGISCHE TO-DOS -->
+        <div class="glass-card">
+            <h2>📋 Strategische To-Dos</h2>
+            <ul>
+                <li><strong>Rechtswahl</strong> (z.B. Französisches Recht) festlegen.</li>
+                <li><strong>Verfahrenssprache</strong> im Vertrag fixieren.</li>
+                <li><strong>Streitwert-Grenzen</strong> für Schiedsrichter definieren.</li>
+                <li><strong>Masterplan</strong> in die Projekt-Eskalationsmatrix integrieren.</li>
+            </ul>
+        </div>
+
+        <!-- WEITERE RESSOURCEN -->
+        <div class="glass-card">
+            <h2>🔗 Weitere Ressourcen</h2>
+            <h3>🇫🇷 Frankreich (Paris)</h3>
+            <p>
+                <a href="https://iccwbo.org/dispute-resolution/" target="_blank" class="btn-link">ICC Court</a>
+                <a href="https://iccwbo.org/dispute-resolution/dispute-resolution-services/arbitration/rules-procedure/2021-arbitration-rules/" target="_blank" class="btn-link">ICC Rules 2021</a>
+                <a href="https://www.afa-arbitrage.com/" target="_blank" class="btn-link">AFA</a>
+                <a href="https://www.cmap.fr/" target="_blank" class="btn-link">CMAP</a>
+                <a href="https://parisarbitrationweek.com/" target="_blank" class="btn-link">Paris Week</a>
+            </p>
+
+            <h3>🇮🇪 Irland (Dublin)</h3>
+            <p>
+                <a href="https://arbitrationireland.com/" target="_blank" class="btn-link">Arbitration Ireland</a>
+                <a href="https://dublinarbitration.com/" target="_blank" class="btn-link">DIAC</a>
+                <a href="https://www.lawsociety.ie/alternative-dispute-resolution/" target="_blank" class="btn-link">Law Society ADR</a>
+                <a href="https://www.ciarb.ie/" target="_blank" class="btn-link">CIArb Ireland</a>
+            </p>
+
+            <h3>🇪🇸 Spanien (Madrid/Barcelona)</h3>
+            <p>
+                <a href="https://ciam-arbitraje.com/" target="_blank" class="btn-link">CIAM</a>
+                <a href="https://cima-arbitraje.com/" target="_blank" class="btn-link">CIMA</a>
+                <a href="https://tab.barcelona/" target="_blank" class="btn-link">TAB Barcelona</a>
+                <a href="https://www.clubarbitraje.com/" target="_blank" class="btn-link">CEA</a>
+            </p>
+
+            <h3>🇩🇪 Deutschland (Berlin/Frankfurt)</h3>
+            <p>
+                <a href="https://www.disarb.org/" target="_blank" class="btn-link">DIS</a>
+                <a href="https://www.disarb.org/regelwerke/dis-schiedsordnung-2018" target="_blank" class="btn-link">DIS Rules 2018</a>
+                <a href="https://www.disarb.org/schiedsverfahren/musterklauseln" target="_blank" class="btn-link">DIS Musterklauseln</a>
+                <a href="https://www.gmaa.de/" target="_blank" class="btn-link">GMAA Maritime</a>
+                <a href="https://www.fiac-arbitration.de/" target="_blank" class="btn-link">FIAC Frankfurt</a>
+            </p>
+
+            <h3>🇸🇪 Schweden (Stockholm)</h3>
+            <p>
+                <a href="https://sccarbitrationinstitute.se/" target="_blank" class="btn-link">SCC Institute</a>
+                <a href="https://sccarbitrationinstitute.se/en/resource-library/rules-and-guidelines" target="_blank" class="btn-link">SCC Rules</a>
+                <a href="https://swedisharbitration.se/" target="_blank" class="btn-link">SAA</a>
+            </p>
+
+            <h3>🇦🇺 Australien (Sydney/Melbourne)</h3>
+            <p>
+                <a href="https://acica.org.au/" target="_blank" class="btn-link">ACICA</a>
+                <a href="https://acica.org.au/model-clauses/" target="_blank" class="btn-link">ACICA Model Clauses</a>
+                <a href="https://amtac.org.au/" target="_blank" class="btn-link">AMTAC Maritime</a>
+            </p>
+
+            <h3>🇧🇪 Belgien (Brüssel)</h3>
+            <p>
+                <a href="https://www.cepani.be/" target="_blank" class="btn-link">CEPANI</a>
+                <a href="https://www.cepani.be/arbitration/rules/" target="_blank" class="btn-link">CEPANI Rules</a>
+                <a href="https://www.brusselsarbitrationschool.com/" target="_blank" class="btn-link">Brussels School</a>
+            </p>
+
+            <h3>🇱🇺 Luxemburg</h3>
+            <p>
+                <a href="https://www.arbitration.lu/" target="_blank" class="btn-link">Luxembourg Center</a>
+                <a href="https://www.thinkarbitration.com/" target="_blank" class="btn-link">Think Arbitration</a>
+            </p>
+
+            <h3>🇦🇹 Österreich (Wien)</h3>
+            <p>
+                <a href="https://www.viac.eu/" target="_blank" class="btn-link">VIAC</a>
+                <a href="https://www.viac.eu/en/arbitration/rules/vienna-rules-2021" target="_blank" class="btn-link">Vienna Rules 2021</a>
+                <a href="https://www.arbaut.at/" target="_blank" class="btn-link">ArbAut</a>
+            </p>
+
+            <h3>🇵🇹 Portugal (Lissabon)</h3>
+            <p>
+                <a href="https://www.centrodearbitragem.pt/" target="_blank" class="btn-link">CAC</a>
+                <a href="https://www.concordia.pt/" target="_blank" class="btn-link">CONCORDIA</a>
+            </p>
+
+            <h3>🇮🇹 Italien (Mailand/Rom)</h3>
+            <p>
+                <a href="https://www.camera-arbitrale.it/" target="_blank" class="btn-link">CAM Milano</a>
+                <a href="https://www.camera-arbitrale.it/en/arbitration/arbitration-rules.php" target="_blank" class="btn-link">CAM Rules</a>
+                <a href="https://www.arbitratoaia.org/" target="_blank" class="btn-link">AIA</a>
+            </p>
+
+            <h3>🌍 Internationale Binding Treaties</h3>
+            <p>
+                <a href="https://treaties.un.org/" target="_blank" class="btn-link">UN Treaties</a>
+                <a href="https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=XXII-1&chapter=22&clang=_en" target="_blank" class="btn-link">NY Convention Status</a>
+                <a href="https://uncitral.un.org/en/texts/arbitration" target="_blank" class="btn-link">UNCITRAL Model Law</a>
+                <a href="https://newyorkconvention1958.org/" target="_blank" class="btn-link">NY Convention Guide</a>
+                <a href="https://icsid.worldbank.org/" target="_blank" class="btn-link">ICSID World Bank</a>
+                <a href="https://pca-cpa.org/" target="_blank" class="btn-link">PCA Den Haag</a>
+            </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 80px; opacity: 0.5; font-size: 0.9rem; letter-spacing: 3px;">
+            © 2024-2026 StarLightMovemenTz Foundation. All Rights Reserved.<br>
+            LCL Powered by Daniel Pohl | Supreme Visionary CEO - CO-CEO
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let stars = [];
+
+        function init() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            stars = [];
+            for(let i = 0; i < 300; i++) {
+                stars.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    size: Math.random() * 1.5,
+                    speed: Math.random() * 0.2 + 0.05
+                });
+            }
+        }
+
+        function draw() {
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, width, height);
+            ctx.fillStyle = '#fff';
+            stars.forEach(s => {
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+                ctx.fill();
+                s.y += s.speed;
+                if(s.y > height) s.y = 0;
+            });
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('load', () => { init(); draw(); });
+        window.addEventListener('resize', init);
+    </script>
+</body>
+</html>
