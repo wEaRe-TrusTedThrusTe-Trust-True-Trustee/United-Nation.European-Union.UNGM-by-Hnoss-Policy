@@ -1,7 +1,25 @@
+PROPRIETARY SOFTWARE LICENSE - PRIVATE & CONFIDENTIAL
+================================================================================
+
 StarLightMovemenTz Foundation Proprietary License
 Copyright © 2024-2026 StarLightMovemenTz Foundation. All Rights Reserved.
 
 LCL Powered by Daniel Pohl | Vision from CEO - CO-CEO and the Team of WorldWideWeb
+
+⚠️ WARNING: THIS IS A PRIVATE, PROPRIETARY LICENSE ⚠️
+
+This software and all associated materials are PRIVATE PROPERTY and are NOT 
+intended for public use, open-source distribution, or commercial exploitation 
+by third parties. This is NOT an open-source license (not MIT, Apache, GPL, 
+BSD, or any other permissive/copyleft license).
+
+BY ACCESSING THIS REPOSITORY, YOU ACKNOWLEDGE THAT:
+- This Work is confidential and proprietary
+- No public use or distribution rights are granted
+- All rights remain exclusively with StarLightMovemenTz Foundation
+- Unauthorized use may result in legal action under international arbitration law
+
+================================================================================
 
 TERMS AND CONDITIONS
 
@@ -10,13 +28,23 @@ TERMS AND CONDITIONS
    property of StarLightMovemenTz Foundation. All rights, title, and interest in
    and to the Work are reserved.
 
-2. GRANT OF LICENSE
+2. GRANT OF LIMITED LICENSE
    Subject to the terms and conditions of this License, StarLightMovemenTz Foundation
    hereby grants you a limited, non-exclusive, non-transferable, revocable license to:
    
-   a) View and study the source code for educational purposes
-   b) Deploy this Work for authorized organizational use only
+   a) View and study the source code for educational purposes ONLY
+   b) Deploy this Work for authorized organizational use ONLY, with explicit prior 
+      written permission from StarLightMovemenTz Foundation
    c) Reference this Work in legal and compliance documentation
+
+   ⚠️ EXPLICITLY EXCLUDED FROM THIS LICENSE:
+   - Public use, hosting, or distribution of any kind
+   - Open-source or community-driven development
+   - Commercial exploitation, monetization, or public services
+   - Making the Work publicly accessible via websites, APIs, or platforms
+   - ANY use that would constitute "public operation" (öffentlicher Betrieb)
+   
+   This is a PRIVATE, PERSONAL LICENSE. No public rights are conferred.
 
 3. RESTRICTIONS
    You may NOT:
@@ -27,6 +55,9 @@ TERMS AND CONDITIONS
    d) Use the Work for commercial purposes without explicit written permission
    e) Redistribute, sublicense, or transfer the Work to any third party
    f) Use the Work in any manner that violates applicable laws or regulations
+   g) Deploy the Work for public operation (öffentlicher Betrieb) or public access
+   h) Publish, host, or make the Work available to the general public
+   i) Use the Work in any open-source, community, or publicly accessible context
 
 4. LEGAL FRAMEWORK INTEGRITY
    This Work contains strategic legal frameworks including arbitration clauses and
@@ -81,6 +112,26 @@ Contact: corporationpartner.governmententerprise.org
 JURISDICTION:
 This License shall be governed by and construed in accordance with international
 commercial law, with disputes subject to ICC arbitration as specified in Section 5.
+
+================================================================================
+DEUTSCHE KLARSTELLUNG / GERMAN CLARIFICATION
+================================================================================
+
+PERSÖNLICHE & PRIVATE LIZENZ - NICHT FÜR ÖFFENTLICHEN BETRIEB
+
+Dies ist eine PERSÖNLICHE, PROPRIETÄRE LIZENZ (Proprietary License).  
+Diese Software ist PRIVATES EIGENTUM und NICHT für:
+- Öffentlichen Betrieb (public operation)
+- Kommerzielle öffentliche Nutzung
+- Open-Source Distribution
+- Community-basierte Entwicklung
+- Jegliche Form öffentlich zugänglicher Dienste
+
+Diese Lizenz gewährt KEINE Rechte für öffentliche Nutzung oder Verbreitung.
+Alle Rechte verbleiben ausschließlich bei StarLightMovemenTz Foundation.
+
+WARNUNG: Unbefugte öffentliche Nutzung kann zu rechtlichen Schritten gemäß
+ICC-Schiedsgerichtsbarkeit (Paris) führen.
 
 ================================================================================
 REGISTERED & PROTECTED WORK | SUPREME GOVERNANCE ARCHITECTURE
