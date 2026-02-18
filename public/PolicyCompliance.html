@@ -298,23 +298,13 @@
             letter-spacing: 1px;
         }
 
-        .sig-email-list {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .sig-email-item {
+        .sig-email {
             color: #fff;
             text-decoration: none;
-            font-size: 0.85rem;
-            opacity: 0.85;
-            transition: all 0.3s;
+            transition: color 0.3s;
         }
-
-        .sig-email-item:hover {
-            opacity: 1;
-            color: var(--gold);
+        .sig-email:hover { 
+            color: #FFCC00; 
         }
 
         .sig-links {
@@ -352,11 +342,6 @@
             text-align: center;
         }
 
-        .hnoss-brand {
-            display: block;
-            margin-bottom: 12px;
-        }
-
         .hnoss-mini {
             font-family: 'Cinzel', serif;
             font-size: 1.4rem;
@@ -368,34 +353,11 @@
             line-height: 1;
         }
 
-        .tm-notice {
-            color: rgba(255, 204, 0, 0.65);
-            font-size: 0.5rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-top: 4px;
-        }
-
-        .legal-block {
-            text-align: center;
-        }
-
-        .lei-tag {
-            font-size: 0.7rem;
-            color: #fcf6ba;
-            letter-spacing: 1.5px;
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 700;
-        }
-
-        .rights-mini {
+        .rights-note {
             color: #ff4d4d;
             font-size: 0.6rem;
             font-weight: 700;
             text-transform: uppercase;
-            border-right: 2px solid #ff4d4d;
-            padding-right: 10px;
             letter-spacing: 1.2px;
         }
 
@@ -787,8 +749,8 @@
                         </div>
                         <div class="grid-cell">
                             <span class="cell-value">
-                                <a href="mailto:LikeWise@Paderborn.com" class="sig-email-item">LikeWise@Paderborn.com</a><br>
-                                <a href="mailto:StatesFlowWishes@outlook.it" class="sig-email-item">StatesFlowWishes@outlook.it</a>
+                                <a href="mailto:LikeWise@Paderborn.com" class="sig-email">LikeWise@Paderborn.com</a><br>
+                                <a href="mailto:StatesFlowWishes@outlook.it" class="sig-email">StatesFlowWishes@outlook.it</a>
                             </span>
                         </div>
 
@@ -830,14 +792,18 @@
             </div>
 
             <div class="sig-footer">
-                <div class="hnoss-brand">
-                    <span class="hnoss-mini">HNOSS&trade;</span>
-                    <span class="tm-notice">Registered Trade Mark | Foundation Entity</span>
-                </div>
-                <div class="legal-block">
-                    <span class="lei-tag">LEI ID: 894500GBJSIW8L6ET310</span>
-                    <span class="rights-mini">Keine Rechteabtretung erteilt. &copy;</span>
-                </div>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td align="left">
+                            <span class="hnoss-mini">HNOSS&trade;</span><br>
+                            <span style="color: #FFCC00; font-size: 10px; text-transform: uppercase; letter-spacing: 2px;">Registered Trade Mark</span>
+                        </td>
+                        <td align="right" valign="bottom">
+                            <span style="font-size: 10px; color: #aaaaaa; display: block; margin-bottom: 3px;">LEI: 894500GBJSIW8L6ET310</span>
+                            <span class="rights-note">Keine Rechteabtretung erteilt. &copy;</span>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
@@ -1051,8 +1017,8 @@
                         </div>
                         <div class="grid-cell">
                             <span class="cell-value">
-                                <a href="mailto:LikeWise@Paderborn.com" class="sig-email-item">LikeWise@Paderborn.com</a><br>
-                                <a href="mailto:StatesFlowWishes@outlook.it" class="sig-email-item">StatesFlowWishes@outlook.it</a>
+                                <a href="mailto:LikeWise@Paderborn.com" class="sig-email">LikeWise@Paderborn.com</a><br>
+                                <a href="mailto:StatesFlowWishes@outlook.it" class="sig-email">StatesFlowWishes@outlook.it</a>
                             </span>
                         </div>
 
@@ -1094,14 +1060,18 @@
             </div>
 
             <div class="sig-footer">
-                <div class="hnoss-brand">
-                    <span class="hnoss-mini">HNOSS&trade;</span>
-                    <span class="tm-notice">Registered Trade Mark | Foundation Entity</span>
-                </div>
-                <div class="legal-block">
-                    <span class="lei-tag">LEI ID: 894500GBJSIW8L6ET310</span>
-                    <span class="rights-mini">Keine Rechteabtretung erteilt. &copy;</span>
-                </div>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td align="left">
+                            <span class="hnoss-mini">HNOSS&trade;</span><br>
+                            <span style="color: #FFCC00; font-size: 10px; text-transform: uppercase; letter-spacing: 2px;">Registered Trade Mark</span>
+                        </td>
+                        <td align="right" valign="bottom">
+                            <span style="font-size: 10px; color: #aaaaaa; display: block; margin-bottom: 3px;">LEI: 894500GBJSIW8L6ET310</span>
+                            <span class="rights-note">Keine Rechteabtretung erteilt. &copy;</span>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
