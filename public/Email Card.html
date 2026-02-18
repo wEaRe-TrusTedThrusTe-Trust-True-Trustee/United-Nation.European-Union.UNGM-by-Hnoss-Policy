@@ -1,0 +1,495 @@
+/* LCL Powerd by Daniel Pohl a Vision from CEO - CO-CEO and the Team of WorldWideWeb */
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starlight Signature | StarLightMovemenTz Foundation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --eu-blue: #001a4d;
+            --eu-blue-deep: #000a1f;
+            --gold-shine: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            --metallic-mix: linear-gradient(135deg, #e0e0e0 0%, #fcf6ba 45%, #ffffff 50%, #fbf5b7 55%, #b0bec5 100%);
+            --blue-metallic-bg: radial-gradient(circle at 50% 50%, #001a4d 0%, #000a1f 100%);
+            --eu-gold: #FFCC00;
+            --line-color: rgba(191, 149, 63, 0.2);
+            --vector-glow: rgba(252, 246, 186, 0.4);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--blue-metallic-bg);
+            background-attachment: fixed;
+            font-family: 'Montserrat', sans-serif;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .geometry-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(var(--line-color) 0.5px, transparent 0.5px),
+                linear-gradient(90deg, var(--line-color) 0.5px, transparent 0.5px);
+            background-size: 80px 80px;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.4;
+        }
+
+        /* ========== PANZERGLAS EFFEKT ========== */
+        .sig-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            max-width: 85vw;
+            max-height: 85vh;
+            background: linear-gradient(160deg, rgba(0, 26, 77, 0.75) 0%, rgba(0, 5, 15, 0.85) 100%);
+            border: 2px solid rgba(191, 149, 63, 0.6);
+            padding: 40px 50px 30px 50px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37),
+                        0 50px 100px rgba(0,0,0,0.9),
+                        inset 0 0 50px rgba(191, 149, 63, 0.08);
+            z-index: 10;
+            backdrop-filter: blur(45px) saturate(180%);
+            -webkit-backdrop-filter: blur(45px) saturate(180%);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border-radius: 12px;
+        }
+
+        .sig-emblem-docked {
+            position: absolute;
+            top: -42px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 84px;
+            height: 84px;
+            background: linear-gradient(135deg, rgba(0, 26, 77, 0.9) 0%, rgba(0, 8, 20, 0.95) 100%);
+            border-radius: 50%;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 32px 0 rgba(191, 149, 63, 0.4),
+                        0 0 20px var(--vector-glow);
+            border: 3px solid rgba(191, 149, 63, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .sig-emblem-text {
+            font-family: 'Cinzel', serif;
+            font-size: 0.55rem;
+            font-weight: 900;
+            text-align: center;
+            background: var(--metallic-mix);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+
+        #card-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.9;
+        }
+
+        .sig-header {
+            border-bottom: 1px solid rgba(191, 149, 63, 0.3);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .sig-header h1 {
+            margin: 0;
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            background: var(--metallic-mix);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 8px;
+            font-weight: 900;
+            text-transform: uppercase;
+            filter: drop-shadow(0 0 10px rgba(252, 246, 186, 0.2));
+        }
+
+        .sig-subtitle {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            font-weight: 400;
+            color: rgba(255,255,255,0.85);
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+
+        /* ========== A4 BREAKPOINT: ZENTRALE HARMONISCHE STRUKTUR ========== */
+        .sig-body {
+            display: block;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .sig-column {
+            width: 100%;
+        }
+
+        .sig-section {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .sig-label {
+            color: var(--eu-gold);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+            display: block;
+            text-align: center;
+        }
+
+        .sig-label::after {
+            display: none;
+        }
+
+        .sig-value {
+            background: var(--metallic-mix);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            display: block;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .sig-email-list {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .sig-email-item {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            opacity: 0.85;
+            transition: all 0.3s;
+            width: fit-content;
+        }
+
+        .sig-email-item:hover {
+            opacity: 1;
+            color: var(--eu-gold);
+        }
+
+        .sig-links {
+            margin-top: 18px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .sig-link {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            font-size: 0.6rem;
+            border: 1px solid rgba(191, 149, 63, 0.3);
+            padding: 6px 14px;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.2);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .sig-link:hover {
+            background: var(--gold-shine);
+            color: #000;
+            border-color: transparent;
+            transform: translateY(-1px);
+        }
+
+        .sig-footer {
+            margin-top: 25px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(191, 149, 63, 0.25);
+            display: block;
+            text-align: center;
+        }
+
+        .hnoss-brand {
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .hnoss-mini {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            background: var(--gold-shine);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            letter-spacing: 6px;
+            line-height: 1;
+        }
+
+        .tm-notice {
+            color: rgba(255, 204, 0, 0.65);
+            font-size: 0.5rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        .legal-block {
+            text-align: center;
+        }
+
+        .lei-tag {
+            font-size: 0.7rem;
+            color: #fcf6ba;
+            letter-spacing: 1.5px;
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        .rights-mini {
+            color: #ff4d4d;
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-right: 2px solid #ff4d4d;
+            padding-right: 10px;
+            letter-spacing: 1.2px;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, rgba(191, 149, 63, 0.25) 0%, rgba(191, 149, 63, 0.35) 100%);
+            border: 2px solid rgba(191, 149, 63, 0.6);
+            color: #fcf6ba;
+            font-family: 'Cinzel', serif;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            backdrop-filter: blur(25px) saturate(150%);
+            -webkit-backdrop-filter: blur(25px) saturate(150%);
+            transition: all 0.4s ease;
+            z-index: 10000;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(135deg, rgba(191, 149, 63, 0.9) 0%, rgba(252, 246, 186, 0.9) 100%);
+            color: #000;
+            box-shadow: 0 8px 32px 0 rgba(191, 149, 63, 0.5),
+                        0 0 40px rgba(191, 149, 63, 0.6);
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body>
+
+<a href="TrustedTrustThrust.html" class="back-btn">← Zurück</a>
+
+<canvas id="bg-canvas"></canvas>
+<div class="geometry-overlay"></div>
+
+<div class="sig-card">
+    <div class="sig-emblem-docked">
+        <div class="sig-emblem-text">
+            TRUSTED<br>AUTHORITY
+        </div>
+    </div>
+
+    <canvas id="card-canvas"></canvas>
+
+    <div class="sig-header">
+        <h1>StarLightMovemenTz</h1>
+        <div class="sig-subtitle">Foundation | Expert Under Civil Law | EU-Union</div>
+    </div>
+
+    <div class="sig-body">
+        <div class="sig-column">
+            <div class="sig-section">
+                <span class="sig-label">Trustee & Legal Person</span>
+                <span class="sig-value">Daniel Pohl (HolyThreeKings)</span>
+            </div>
+
+            <div class="sig-section">
+                <span class="sig-label">Direct Channels</span>
+                <div class="sig-email-list">
+                    <a href="mailto:LikeWise@Paderborn.com" class="sig-email-item">LikeWise@Paderborn.com</a>
+                    <a href="mailto:StatesFlowWishes@outlook.it" class="sig-email-item">StatesFlowWishes@outlook.it</a>
+                </div>
+            </div>
+
+            <div class="sig-section">
+                <span class="sig-label">D-U-N-S® Global Database</span>
+                <span class="sig-value">315676980 / 317066336</span>
+            </div>
+        </div>
+
+        <div class="sig-column">
+            <div class="sig-section">
+                <span class="sig-label">VAT ID / EU Reference</span>
+                <span class="sig-value">DE441892129 | EX2025D1218310</span>
+            </div>
+
+            <div class="sig-section">
+                <span class="sig-label">UNGM & PIC Identifier</span>
+                <span class="sig-value">1172700 | 873042778</span>
+            </div>
+
+            <div class="sig-section">
+                <span class="sig-label">Swiss Identification (AHV)</span>
+                <span class="sig-value">756.6199.0539.28</span>
+            </div>
+        </div>
+
+        <div class="sig-links">
+            <a href="https://corporationpartner.governmententerprise.org" class="sig-link">Gov-Portal</a>
+            <a href="http://trustedorbitscodex.eu" class="sig-link">Codex-EU</a>
+            <a href="https://github.com/wEaRe-TrusTedThrusTe-Trust-True-Trustee" class="sig-link">Registry</a>
+        </div>
+    </div>
+
+    <div class="sig-footer">
+        <div class="hnoss-brand">
+            <span class="hnoss-mini">HNOSS&trade;</span>
+            <span class="tm-notice">Registered Trade Mark | Foundation Entity</span>
+        </div>
+        <div class="legal-block">
+            <span class="lei-tag">LEI ID: 894500GBJSIW8L6ET310</span>
+            <span class="rights-mini">Keine Rechteabtretung erteilt. &copy;</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    const bgCanvas = document.getElementById('bg-canvas');
+    const cardCanvas = document.getElementById('card-canvas');
+    const bgCtx = bgCanvas.getContext('2d');
+    const cardCtx = cardCanvas.getContext('2d');
+
+    class HarmonicGeometry {
+        constructor(canvas, ctx, starCount, connectionDist, speedMult) {
+            this.canvas = canvas;
+            this.ctx = ctx;
+            this.starCount = starCount;
+            this.connectionDist = connectionDist;
+            this.speedMult = speedMult || 1;
+            this.points = [];
+            this.init();
+        }
+
+        init() {
+            this.canvas.width = this.canvas.offsetWidth || window.innerWidth;
+            this.canvas.height = this.canvas.offsetHeight || window.innerHeight;
+            this.points = [];
+            for (let i = 0; i < this.starCount; i++) {
+                this.points.push({
+                    x: Math.random() * this.canvas.width,
+                    y: Math.random() * this.canvas.height,
+                    size: Math.random() * 2,
+                    vx: (Math.random() - 0.5) * 0.4 * this.speedMult,
+                    vy: (Math.random() - 0.5) * 0.4 * this.speedMult,
+                    opacity: Math.random()
+                });
+            }
+        }
+
+        draw() {
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            for(let i=0; i < this.points.length; i++) {
+                let p = this.points[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                if(p.x < 0 || p.x > this.canvas.width) p.vx *= -1;
+                if(p.y < 0 || p.y > this.canvas.height) p.vy *= -1;
+                this.ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+                this.ctx.beginPath();
+                this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                this.ctx.fill();
+                for(let j=i+1; j < this.points.length; j++) {
+                    let p2 = this.points[j];
+                    let dx = p.x - p2.x;
+                    let dy = p.y - p2.y;
+                    let dist = Math.sqrt(dx*dx + dy*dy);
+                    if(dist < this.connectionDist) {
+                        this.ctx.strokeStyle = `rgba(191, 149, 63, ${0.45 * (1 - dist/this.connectionDist)})`;
+                        this.ctx.lineWidth = 0.6;
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(p.x, p.y);
+                        this.ctx.lineTo(p2.x, p2.y);
+                        this.ctx.stroke();
+                    }
+                }
+            }
+        }
+    }
+
+    // Höhere Dichte: 800 Sterne im Hintergrund, 200 in der Karte
+    const bgLogic = new HarmonicGeometry(bgCanvas, bgCtx, 800, 110, 1.2);
+    const cardLogic = new HarmonicGeometry(cardCanvas, cardCtx, 200, 130, 0.8);
+
+    function animate() {
+        bgLogic.draw();
+        cardLogic.draw();
+        requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', () => {
+        bgLogic.init();
+        cardLogic.init();
+    });
+
+    window.onload = animate;
+</script>
+
+</body>
+</html>
