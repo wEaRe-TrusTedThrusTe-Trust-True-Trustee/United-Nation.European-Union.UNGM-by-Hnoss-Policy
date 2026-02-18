@@ -51,3 +51,4 @@ next-env.d.ts
 # Backup files
 *.bak
 *.backup
+.nvm/
