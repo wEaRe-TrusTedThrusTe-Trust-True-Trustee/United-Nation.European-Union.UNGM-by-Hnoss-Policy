@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Policy & Compliance | StarLightMovemenTz Foundation</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Montserrat:wght@200;300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Montserrat:wght@200;300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Marcellus&display=swap');
 
         :root {
             --eu-blue: #001a4d;
@@ -662,6 +662,260 @@
             font-size: 0.75rem;
             border-radius: 4px;
             letter-spacing: 0.5px;
+        }
+
+        /* ========== EMAIL CARD 1 STYLES (Bottom Card) ========== */
+        .email-card-1-section {
+            position: relative;
+            z-index: 1000;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 20px;
+            background: radial-gradient(circle at 50% 50%, #001a4d 0%, #000a1f 100%);
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        .email-card-1-section .geometry-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(191, 149, 63, 0.45) 0.5px, transparent 0.5px),
+                linear-gradient(90deg, rgba(191, 149, 63, 0.45) 0.5px, transparent 0.5px);
+            background-size: 80px 80px;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.25;
+        }
+
+        .email-card-1-section #bg-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ========== PANZERGLAS EFFEKT CARD (QUEER) ========== */
+        .email-card-1-section .sig-card {
+            position: relative;
+            width: 920px;
+            max-width: 95vw;
+            background: linear-gradient(160deg, rgba(0, 10, 35, 0.94) 0%, rgba(0, 5, 12, 0.98) 100%);
+            border: 1.5px solid rgba(191, 149, 63, 0.7);
+            padding: 45px 50px 35px 50px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 1),
+                        inset 0 0 60px rgba(191, 149, 63, 0.1);
+            z-index: 10;
+            backdrop-filter: blur(60px) saturate(200%);
+            -webkit-backdrop-filter: blur(60px) saturate(200%);
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .email-card-1-section .metallic-glow {
+            filter: drop-shadow(0 0 5px rgba(252, 246, 186, 0.4));
+        }
+
+        .email-card-1-section .sig-emblem-docked {
+            position: absolute;
+            top: -42px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 84px;
+            height: 84px;
+            background: linear-gradient(135deg, #001a4d 0%, #000a1f 100%);
+            border-radius: 50%;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 35px rgba(191, 149, 63, 0.5);
+            border: 2px solid rgba(191, 149, 63, 0.9);
+        }
+
+        .email-card-1-section .sig-emblem-text {
+            font-family: 'Cinzel', serif;
+            font-size: 0.55rem;
+            font-weight: 900;
+            text-align: center;
+            background: linear-gradient(to bottom, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            line-height: 1.1;
+        }
+
+        .email-card-1-section #card-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 1;
+        }
+
+        .email-card-1-section .sig-header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .email-card-1-section .sig-header h1 {
+            margin: 0;
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            background: linear-gradient(to bottom, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 16px;
+            font-weight: 900;
+            text-transform: uppercase;
+            filter: drop-shadow(0 0 12px rgba(191, 149, 63, 0.6));
+        }
+
+        .email-card-1-section .sig-subtitle {
+            font-family: 'Marcellus', serif;
+            font-size: 0.8rem;
+            letter-spacing: 8px;
+            background: linear-gradient(to bottom, #e0e0e0 0%, #ffffff 25%, #b0bec5 50%, #f5f5f5 75%, #90a4ae 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            margin-top: 8px;
+            font-weight: 700;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+        }
+
+        /* ========== RAINBOW NETZ ========== */
+        @keyframes rainbow-flow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .email-card-1-section .rainbow-net-wrapper {
+            position: relative;
+            background: linear-gradient(90deg,
+                #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+            background-size: 200% auto;
+            animation: rainbow-flow 4s linear infinite;
+            padding: 1px;
+            border-radius: 2px;
+            margin-bottom: 25px;
+        }
+
+        .email-card-1-section .sig-data-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr 2fr);
+            gap: 1px;
+            background: transparent;
+        }
+
+        .email-card-1-section .grid-cell {
+            background: rgba(0, 10, 25, 0.99);
+            padding: 14px 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 48px;
+        }
+
+        .email-card-1-section .sig-label {
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(to bottom, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            margin-bottom: 3px;
+        }
+
+        .email-card-1-section .sig-value {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(to bottom, #e0e0e0 0%, #ffffff 25%, #b0bec5 50%, #f5f5f5 75%, #90a4ae 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: 0.8px;
+            filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.2));
+        }
+
+        .email-card-1-section .sig-email-item {
+            background: linear-gradient(to bottom, #e0e0e0 0%, #ffffff 25%, #b0bec5 50%, #f5f5f5 75%, #90a4ae 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            font-style: italic;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .email-card-1-section .sig-email-item:hover { 
+            filter: drop-shadow(0 0 8px rgba(255,255,255,0.6)); 
+        }
+
+        .email-card-1-section .sig-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 10px 0 25px 0;
+        }
+
+        .email-card-1-section .sig-link {
+            background: linear-gradient(to bottom, #804a00 0%, #b08d57 25%, #633517 50%, #a17951 75%, #4e270a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            font-family: 'Marcellus', serif;
+            font-size: 0.7rem;
+            font-weight: 900;
+            border: 1px solid rgba(191, 149, 63, 0.3);
+            padding: 7px 20px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .email-card-1-section .sig-link:hover {
+            border-color: #bf953f;
+            background: rgba(191, 149, 63, 0.15);
+            letter-spacing: 4px;
+        }
+
+        .email-card-1-section .sig-footer {
+            margin-top: 15px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(191, 149, 63, 0.25);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .email-card-1-section .hnoss-mini {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            background: linear-gradient(to bottom, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            letter-spacing: 8px;
+            filter: drop-shadow(0 0 8px rgba(191,149,63,0.5));
         }
     </style>
 </head>
@@ -1569,6 +1823,144 @@ Im Business bedeutet das: Dezentralisierung, Empowerment, schnelle Entscheidungs
 
         initWarpStars('starCanvasTop');
         initWarpStars('starCanvasBottom');
+    </script>
+
+    <!-- Email Card 1 (Bottom - Rainbow Network & Swarm Konstellation) -->
+    <div class="email-card-1-section">
+        <canvas id="bg-canvas"></canvas>
+        <div class="geometry-overlay"></div>
+
+        <div class="sig-card">
+            <div class="sig-emblem-docked">
+                <div class="sig-emblem-text">
+                    TRUSTED<br>AUTHORITY
+                </div>
+            </div>
+
+            <canvas id="card-canvas"></canvas>
+
+            <div class="sig-header">
+                <h1>StarLightMovemenTz</h1>
+                <div class="sig-subtitle">Foundation | Law Expert | EU-Union</div>
+            </div>
+
+            <div class="rainbow-net-wrapper">
+                <div class="sig-data-grid">
+                    <div class="grid-cell"><span class="sig-label">Trustee</span></div>
+                    <div class="grid-cell"><span class="sig-value">Daniel Pohl (HolyThreeKings)</span></div>
+
+                    <div class="grid-cell"><span class="sig-label">D-U-N-S®</span></div>
+                    <div class="grid-cell"><span class="sig-value">315676980 / 317066336</span></div>
+
+                    <div class="grid-cell"><span class="sig-label">Contact</span></div>
+                    <div class="grid-cell">
+                        <a href="mailto:LikeWise@Paderborn.com" class="sig-email-item">LikeWise@Paderborn.com</a>
+                        <a href="mailto:StatesFlowWishes@outlook.it" class="sig-email-item">StatesFlowWishes@outlook.it</a>
+                    </div>
+
+                    <div class="grid-cell"><span class="sig-label">VAT / Ref</span></div>
+                    <div class="grid-cell"><span class="sig-value">DE441892129 | EX2025D1218310</span></div>
+
+                    <div class="grid-cell"><span class="sig-label">UNGM | PIC</span></div>
+                    <div class="grid-cell"><span class="sig-value">1172700 | 873042778</span></div>
+
+                    <div class="grid-cell"><span class="sig-label">Swiss AHV</span></div>
+                    <div class="grid-cell"><span class="sig-value">756.6199.0539.28</span></div>
+                </div>
+            </div>
+
+            <div class="sig-links">
+                <a href="https://corporationpartner.governmententerprise.org" target="_blank" class="sig-link">Gov-Portal</a>
+                <a href="http://trustedorbitscodex.eu" target="_blank" class="sig-link">Codex-EU</a>
+                <a href="https://github.com/wEaRe-TrusTedThrusTe-Trust-True-Trustee" target="_blank" class="sig-link">Registry</a>
+            </div>
+
+            <div class="sig-footer">
+                <div>
+                    <span class="hnoss-mini">HNOSS&trade;</span><br>
+                    <span style="font-family: 'Marcellus', serif; font-size: 0.6rem; color: #a17951; letter-spacing: 1.5px; font-weight: 900;">LEI: 894500GBJSIW8L6ET310</span>
+                </div>
+                <div style="text-align: right;">
+                    <div style="color: #ff4d4d; font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; filter: drop-shadow(0 0 3px rgba(255,0,0,0.3));">&copy; KEINE RECHTEABTRETUNG</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== SWARM KONSTELLATION ANIMATION (Email Card 1) ==========
+        const bgCanvas = document.getElementById('bg-canvas');
+        const cardCanvas = document.getElementById('card-canvas');
+        const bgCtx = bgCanvas.getContext('2d');
+        const cardCtx = cardCanvas.getContext('2d');
+
+        class StarSystem {
+            constructor(canvas, ctx, count, dist, speed) {
+                this.canvas = canvas;
+                this.ctx = ctx;
+                this.count = count;
+                this.dist = dist;
+                this.speed = speed;
+                this.points = [];
+                this.init();
+            }
+            init() {
+                this.canvas.width = this.canvas.offsetWidth || window.innerWidth;
+                this.canvas.height = this.canvas.offsetHeight || window.innerHeight;
+                this.points = Array.from({length: this.count}, () => ({
+                    x: Math.random() * this.canvas.width,
+                    y: Math.random() * this.canvas.height,
+                    vx: (Math.random() - 0.5) * this.speed,
+                    vy: (Math.random() - 0.5) * this.speed,
+                    s: Math.random() * 2
+                }));
+            }
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                this.points.forEach(p => {
+                    p.x += p.vx; p.y += p.vy;
+                    if(p.x < 0 || p.x > this.canvas.width) p.vx *= -1;
+                    if(p.y < 0 || p.y > this.canvas.height) p.vy *= -1;
+
+                    this.ctx.fillStyle = "rgba(255,255,255,0.7)";
+                    this.ctx.beginPath();
+                    this.ctx.arc(p.x, p.y, p.s, 0, Math.PI*2);
+                    this.ctx.fill();
+                });
+
+                for(let i=0; i < this.points.length; i++){
+                    for(let j=i+1; j < this.points.length; j++){
+                        let dx = this.points[i].x - this.points[j].x;
+                        let dy = this.points[i].y - this.points[j].y;
+                        let d = Math.sqrt(dx*dx + dy*dy);
+                        if(d < this.dist) {
+                            this.ctx.strokeStyle = `rgba(191,149,63,${0.5 * (1 - d/this.dist)})`;
+                            this.ctx.lineWidth = 0.9;
+                            this.ctx.beginPath();
+                            this.ctx.moveTo(this.points[i].x, this.points[i].y);
+                            this.ctx.lineTo(this.points[j].x, this.points[j].y);
+                            this.ctx.stroke();
+                        }
+                    }
+                }
+            }
+        }
+
+        const bgS = new StarSystem(bgCanvas, bgCtx, 700, 130, 0.45);
+        const cardS = new StarSystem(cardCanvas, cardCtx, 150, 120, 0.25);
+
+        function loopEmailCard1() {
+            bgS.draw();
+            cardS.draw();
+            requestAnimationFrame(loopEmailCard1);
+        }
+
+        window.addEventListener('resize', () => {
+            bgS.init();
+            cardS.init();
+        });
+
+        loopEmailCard1();
     </script>
 </body>
 </html>
